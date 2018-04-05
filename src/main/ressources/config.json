@@ -19,13 +19,13 @@
         "format": "parquet"
     },
     "columns" : [
-     {"name": "Identifiant", "type": "StringType"},
-     {"name": "Date", "type": "TimestampType", "pattern" : "YYY-MM-dd"},
-     {"name": "Montant_1", "type": "DoubleType"},
-     {"name": "Montant_2", "type": "DoubleType"},
-     {"name": "Montant_3", "type": "DoubleType"},
-     {"name": "Telephone", "type": "StringType"},
-     {"name": "Sum_montant", "type": "DoubleType"},
+     {"name": "Identifiant",     "type": "StringType"},
+     {"name": "Date",            "type": "TimestampType", "pattern" : "YYY-MM-dd"},
+     {"name": "Montant_1",       "type": "DoubleType"},
+     {"name": "Montant_2",       "type": "DoubleType"},
+     {"name": "Montant_3",       "type": "DoubleType"},
+     {"name": "Telephone",       "type": "StringType"},
+     {"name": "Sum_montant",     "type": "DoubleType"},
      {"name": "Div_sum_montant", "type": "DoubleType"}
     ]
 }

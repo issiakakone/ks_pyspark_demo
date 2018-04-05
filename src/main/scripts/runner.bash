@@ -5,14 +5,35 @@
 #% Date: 04/04/2018                           %#
 #%--------------------------------------------%#
 
-[ -z "$SPARK_HOME" ]    && export SPARK_HOME=/opt/spark
-[ -z "$KS_SPARK_HOME" ] && export KS_SPARK_HOME=/home/issiaka/pyspark/target/pyspark-1.0.0
-
-SCRIPTS_DIR="$KS_SPARK_HOME/scripts"
-CONFIG_FILE="$KS_SPARK_HOME/config/config.json"
-
 SPARK_MASTER='local[*]'
 DEPLOY_MODE='client'
+
+[ -z "$SPARK_HOME" ]    && export SPARK_HOME=/opt/spark
+[ -z "$KS_SPARK_HOME" ] && export KS_SPARK_HOME=/home/issiaka/pyspark/target/pyspark-1.0.0
+[ -z "$KS_SPARK_HOME" ] && export KS_SPARK_HOME=/home/issiaka/pyspark/target/pyspark-1.0.0
+
+arg="$1"
+SCRIPTS_DIR="$KS_SPARK_HOME/scripts"
+
+function usage {
+    echo ""
+	echo ""
+	echo "Usage:"
+	echo "    $(basename $0) [-h | --help | config_file_path]"
+	echo ""
+	echo ""
+	exit 0
+}
+
+if [ -n "$arg" ]; then
+	if [ "$arg" = "-h" ] || [ "$arg" = "--help" ]; then
+		usage
+	else
+		CONFIG_FILE="$arg"
+	fi
+else
+	CONFIG_FILE="$KS_SPARK_HOME/config/config.json"
+fi
 
 echo ""
 echo ""
