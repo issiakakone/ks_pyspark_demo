@@ -1,0 +1,31 @@
+{
+    "description": "Configuration file for PySpark data processing example",
+	
+	"environment": {
+        "hdfs_namenode": ""
+    },
+    "input": {
+        "filename": "Test.csv",
+        "path": "/home/issiaka/pyspark/src/test/ressources"
+    },
+    "parsing": {
+        "invalid_path": "/home/issiaka/pyspark/target/output",
+        "invalid_filename": "exception"
+    },
+    
+    "output": {
+        "filename": "f_data",
+        "path" : "/home/issiaka/pyspark/target/output",
+        "format": "parquet"
+    },
+    "columns" : [
+     {"name": "Identifiant", "type": "StringType"},
+     {"name": "Date", "type": "TimestampType", "pattern" : "Y-m-d"},
+     {"name": "Montant_1", "type": "DoubleType"},
+     {"name": "Montant_2", "type": "DoubleType"},
+     {"name": "Montant_3", "type": "DoubleType"},
+     {"name": "Telephone", "type": "StringType"},
+     {"name": "Sum_montant", "type": "DoubleType"},
+     {"name": "Div_sum_montant", "type": "DoubleType"}
+    ]
+}
