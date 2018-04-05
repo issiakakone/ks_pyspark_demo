@@ -79,7 +79,7 @@ The configuration file is in JSON format. The fields are:
 To run this project, extract the package in a desired folder. Set the environment variable `KS_SPARK_HOME` to that folder. Please modify the configuration file as needed. Then execute the following commands:
 
 ```sh
-tar -xvzf ks_pyspark_demo-1.0.0-SNAPSHOT-akuna-matata.tar.gz
+tar -xvzf ks_pyspark_demo-1.0.0-akuna-matata.tar.gz
 export KS_SPARK_HOME='/path/to/extracted/folder'
 chmod u+x $KS_SPARK_HOME/runner.bash
 $KS_SPARK_HOME/runner.bash
@@ -102,9 +102,9 @@ This will submit the job to a local Spark standalone server. You can specify an 
 
 ## TODO
 
-The function `toolkit.ConfigCheck(config)` must be implemented to check the validity of the configuration data semantically
-The `runner.bash` can be modified to take Spark option and configuration file as an argument
-The logging system needs to be improved
+* The function `toolkit.ConfigCheck(config)` must be implemented to check the validity of the configuration data semantically
+* The `runner.bash` can be modified to take Spark option and configuration file as an argument
+* The logging system needs to be improved
 
 ## Input Data Format
 
