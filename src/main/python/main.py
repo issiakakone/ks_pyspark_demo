@@ -28,6 +28,7 @@ from datetime import datetime
 from toolkit import *
 
 APP_NAME = "KoneSoft PySpark Example"
+PARTITION_DATE_PATTERN =     "YYY-MM"
 
 def log(message):
 	global sc
@@ -110,14 +111,18 @@ def main():
 	# We no longer need to persit the RDD
 	parsed_data.unpersist()
 	
-	structured_data.show()
+	## structured_data.show()
 
-	# Saving to output file according to the date format in the config file
-	date_pattern = getDatePattern(config_types, "Date", "%Y-%m-%d")
-	saved_data = structured_data.select("Identifiant", date_format('Date', date_pattern).alias('pDate'), "Montant_1", "Montant_2", "Montant_3", "Telephone", "Sum_montant", "Div_sum_montant")
 	
+	# Saving to output file according to the date format in the config file
+	date_pattern = getDatePattern(config_types, "Date", "YYY-MM-dd")
+	saved_data = structured_data.select(date_format('Date', PARTITION_DATE_PATTERN).alias('partition'), "Identifiant", date_format('Date', date_pattern).alias('Date'), "Montant_1", "Montant_2", "Montant_3", "Telephone", "Sum_montant", "Div_sum_montant")
+
+	## saved_data.show()
+
 	# Save data with partitionning by year and month
-	saved_data.write.partitionBy("Date").mode('overwrite').format(save_format).save(output)
+	saved_data.write.partitionBy("partition").mode('overwrite').format(save_format).save(output)
+
 	
 	# Stop the context
 	sc.stop()

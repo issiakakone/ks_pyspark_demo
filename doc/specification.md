@@ -9,19 +9,18 @@
 ## Enoncé
 L’objectif va être de construire une application PySpark permettant de parser un fichier csv afin de produire en sortie une table externe Hive et son script de création.
 
-Celle-ci devra être générique, et se baser sur un fichier de settings dans lequel on pourra préciser sous forme de clés :
+Celle-ci devra être générique et se baser sur un fichier de settings dans lequel on pourra préciser sous forme de clés :
 
 * Le nom de la table
 * Le schéma (utilisé pour le parsing du fichier et la production de la table externe).
-  * Ex : "name": "date_1", "type": "timestamp", "pattern" : "%Y-%m-%d"
+  * Ex : "name": "date_1", "type": "timestamp", "pattern" : "YYY-MM-dd"
 * Sa localisation sur HDFS
 * Format de fichier en sortie
 * Etc.
 
 On aura un fichier de settings par source.
 
-Dans le cadre de cet exercice, on prendra en entrée un fichier in_data.csv situé sur HDFS dans
-`/river/raw`.
+Dans le cadre de cet exercice, on prendra en entrée un fichier `in_data.csv` situé sur HDFS dans `/river/raw`.
 
 Celui-ci devra être parsé de la manière suivante :
 
@@ -34,14 +33,13 @@ Celui-ci devra être parsé de la manière suivante :
 * Sum_montant : Montant_1 + Montant_2 + Montant_3
 * Div_sum_montant : (Montant_1 + Montant_2) / Montant_3
 
-> * On attendra en sortie une table f_data dans `/river/data/bv_output`
+> * On attendra en sortie une table `f_data` dans `/river/data/bv_output`
 
-> * Attention : Certaines lignes ne sont pas parsable (ex : Format de date invalide), ces lignes doivent être isolé dans le répertoire `/river/data/bv_exception`
+> * Attention : Certaines lignes ne sont pas parsables (ex : Format de date invalide), ces lignes doivent être isolées dans le répertoire `/river/data/bv_exception`
 
-> * Important : On prendra pour hypothèse que le fichier est volumineux, et que la table produite en sortie sera optimisée pour faire des analyses mensuelles
+> * Important : On prendra pour hypothèse que le fichier est volumineux et que la table produite en sortie sera optimisée pour faire des analyses mensuelles
 
 
 ## Output attendu
 
-Une application PySpark déposée sur GitHub déployable en production. Un grand soin devra
-donc être apporté sur la qualité du code.
+Une application PySpark déposée sur GitHub déployable en production. Un grand soin devra donc être apporté sur la qualité du code.

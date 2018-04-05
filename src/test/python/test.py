@@ -33,6 +33,7 @@ reload(toolkit)
 from toolkit import *
 
 APP_NAME = "KoneSoft PySpark Example"
+PARTITION_DATE_PATTERN =     "YYY-MM"
 config_file = "/home/issiaka/pyspark/src/test/ressources/config_test.json"
 
 d = ('"1";"12/11/2015 23:22:26";"15.12";"17.12";"23.74";"06.23.15.48.29"', 1)
@@ -111,10 +112,10 @@ parsed_data.unpersist()
 structured_data.show()
 
 # Saving to output file according to the date format in the config file
-date_pattern = getDatePattern(config_types, "Date", "%Y-%m-%d")
-saved_data = structured_data.select("Identifiant", date_format('Date', date_pattern).alias('Date'), "Montant_1", "Montant_2", "Montant_3", "Telephone", "Sum_montant", "Div_sum_montant")
+date_pattern = getDatePattern(config_types, "Date", "YYY-MM-dd")
+saved_data = structured_data.select(date_format('Date', PARTITION_DATE_PATTERN).alias('partition'), "Identifiant", date_format('Date', date_pattern).alias('Date'), "Montant_1", "Montant_2", "Montant_3", "Telephone", "Sum_montant", "Div_sum_montant")
 
 saved_data.show()
 
 # Save data with partitionning by year and month
-saved_data.write.partitionBy(year(col("Date")), month(col("Date"))).mode('overwrite').format(save_format).save(output)
+saved_data.write.partitionBy("partition").mode('overwrite').format(save_format).save(output)
