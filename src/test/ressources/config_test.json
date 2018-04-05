@@ -6,16 +6,16 @@
     },
     "input": {
         "filename": "Test.csv",
-        "path": "/home/issiaka/pyspark/src/test/ressources"
+        "path": "/home/issiaka/spark/data"
     },
     "parsing": {
-        "invalid_path": "/home/issiaka/pyspark/target/output",
+        "invalid_path": "/home/issiaka/spark/data",
         "invalid_filename": "exception"
     },
     
     "output": {
         "filename": "f_data",
-        "path" : "/home/issiaka/pyspark/target/output",
+        "path" : "/home/issiaka/spark/data",
         "format": "parquet"
     },
     "columns" : [

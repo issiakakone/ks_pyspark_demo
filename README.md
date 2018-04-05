@@ -23,6 +23,7 @@ To run this project, extract the package in a desired folder. Set the environmen
 Then execute the following command:
 
 ```sh
+tar -xvzf ks_pyspark_demo-1.0.0-SNAPSHOT-akuna-matata.tar.gz
 export KS_SPARK_HOME='/path/to/extracted/folder'
 chmod u+x $KS_SPARK_HOME/runner.bash
 $KS_SPARK_HOME/runner.bash

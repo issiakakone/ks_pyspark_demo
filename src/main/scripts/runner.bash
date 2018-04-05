@@ -16,9 +16,10 @@ DEPLOY_MODE='client'
 
 echo ""
 echo ""
-echo "SPARK_HOME=$SPARK_HOME"
-echo "SPARK_MASTER=$SPARK_MASTER"
-echo "DEPLOY_MODE=$DEPLOY_MODE"
+echo "CONFIG_FILE=  '$CONFIG_FILE'"
+echo "SPARK_HOME=   '$SPARK_HOME'"
+echo "SPARK_MASTER= '$SPARK_MASTER'"
+echo "DEPLOY_MODE=  '$DEPLOY_MODE'"
 
 echo ""
 echo ""

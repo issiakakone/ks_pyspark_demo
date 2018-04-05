@@ -20,8 +20,9 @@ import os
 import sys
 from pprint import pprint
 from pyspark import SparkContext
-from pyspark.sql import SQLContext, SaveMode
+from pyspark.sql import SQLContext
 from pyspark.sql.types import *
+from pyspark.sql.types import Row
 from pyspark.sql.functions import *
 from datetime import datetime
 
@@ -74,7 +75,7 @@ def main():
 	
 	config_types = config['columns']
 	
-	log("Parameters:\n\tInput: %s, \n\tOutput: %s, \n\tException: %s." % (input_filename, output, exception_filename));
+	log("\n\nParameters:\n\tInput: %s, \n\tOutput: %s, \n\tException: %s.\n\n" % (input_filename, output, exception_filename));
 	
 	# Reading input source file
 	data = sc.textFile(input_filename)
